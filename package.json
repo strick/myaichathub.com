@@ -1,0 +1,19 @@
+{
+  "name": "myaichathub.com",
+  "version": "1.0.0",
+  "description": "Welcome to the official repository for **myaichathub.com**. Our website is currently under construction, but once launched, it will offer an exciting platform for users to create chatbots and enable others to interact with them.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strick/myaichathub.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/strick/myaichathub.com/issues"
+  },
+  "homepage": "https://github.com/strick/myaichathub.com#readme"
+}
