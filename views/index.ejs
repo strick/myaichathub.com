@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>My AI Chat Hub</h1>
+    </header>
+    
+    <main>
+        <h2>Create your chatbot</h2>
+        <form action="/create-bot" method="post">
+            <label for="prompt">System Prompt:</label>
+            <input type="text" name="prompt" required>
+            
+            <label for="domain">Unique Domain:</label>
+            <input type="text" name="domain" required>
+
+            <button type="submit">Create</button>
+        </form>
+    </main>
+</body>
+</html>
