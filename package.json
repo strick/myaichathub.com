@@ -4,6 +4,7 @@
   "description": "Welcome to the official repository for **myaichathub.com**. Our website is currently under construction, but once launched, it will offer an exciting platform for users to create chatbots and enable others to interact with them.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\""
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/strick/myaichathub.com/issues"
   },
-  "homepage": "https://github.com/strick/myaichathub.com#readme"
+  "homepage": "https://github.com/strick/myaichathub.com#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
