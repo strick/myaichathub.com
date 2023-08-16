@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 8080;
+const PORT = 3000;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
