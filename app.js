@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
+const passport = require('./middleware/passport');
+require('dotenv').config();
+const session = require('express-session');
 
 const app = express();
 const PORT = 3000;
@@ -20,34 +23,24 @@ app.use(ejsLayouts);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route for the main page to create a chatbot
-app.get('/', (req, res) => {
-    res.render('index', { title: 'My AI Chat Hub' });
-});
+app.use(session({
+    secret: process.env.SESSION_SECRET, // Secret key used to sign the session ID cookie
+    resave: false,                 // Forces session to be saved even when not modified
+    saveUninitialized: true,       // Forces a session that is "uninitialized" to be saved to the store
+}));
 
-// Route for the dashboard where users manage and train their bots
-app.get('/dashboard', (req, res) => {
-    // TODO: Add user authentication and display the user's bots.
-    res.render('dashboard', { title: 'Dashboard - My AI Chat Hub' });
-});
+// If you're using passport, initialize it after the express-session middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Route to save the chatbot based on user prompt
-app.post('/create-bot', (req, res) => {
-    const { prompt, domain } = req.body;
-    if (!prompt || !domain) {
-        return res.status(400).send("Prompt and domain are required.");
-    }
-    
-    const botData = {
-        prompt,
-        responses: [],
-        domain
-    };
-    
-    fs.writeFileSync(path.join(__dirname, 'bots', `${domain}.json`), JSON.stringify(botData));
+// Use routes
+const authRoutes = require('./routes/auth');
+const mainRoutes = require('./routes/main');
+const botRoutes = require('./routes/bot');
 
-    res.redirect('/dashboard');
-});
+app.use(authRoutes);
+app.use(mainRoutes);
+app.use(botRoutes);
 
 // Start the server
 app.listen(PORT, () => {
