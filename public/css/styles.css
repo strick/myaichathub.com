@@ -18,6 +18,10 @@ header {
     padding: 1rem 0;
 }
 
+footer {
+    text-align: center;
+}
+
 main {
     max-width: 800px;
     margin: 2rem auto;
@@ -72,4 +76,55 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+.helper-text {
+    display: block;
+    margin-top: 5px;
+    color: #666; /* Adjust color as needed */
+    font-size: 0.9em; /* Adjust font size as needed */
+}
+
+/* Navigation Menu Styles */
+
+.nav-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+}
+
+.nav-menu li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #444;  /* Add a divider between items */
+}
+
+.nav-menu a {
+    display: block;
+    width: 100%;  /* Ensure links take up full width for easier tapping on mobile */
+    padding: 14px 16px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.nav-menu a:hover {
+    background-color: #555;
+}
+
+/* Media query for larger screens */
+
+@media (min-width: 600px) {
+    .nav-menu {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .nav-menu li {
+        border-bottom: none;  /* Remove divider on larger screens */
+    }
 }

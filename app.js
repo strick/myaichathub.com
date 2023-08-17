@@ -2,11 +2,21 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const ejsLayouts = require('express-ejs-layouts');
 
 const app = express();
 const PORT = 3000;
 
+// Set up EJS as the templating engine
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); // assuming your templates are in a 'views' directory
+
+// You can also set a default layout if you wish
+app.set('layout', 'layout'); // this will be layout.ejs in your views directory
+
+// Use express-ejs-layouts
+app.use(ejsLayouts);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 

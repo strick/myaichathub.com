@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Assuming you have a stylesheet at this location -->
+</head>
+<body>
+    <header>
+        <!-- You can add a navigation bar, logo, or other header elements here -->
+        <h1>My AI Chat Hub</h1>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>           
+    </header>
+
+    <main>
+        <%- body %> <!-- This will insert the body content of other views that extend this layout -->
+    </main>
+
+    <footer>
+        <!-- Add footer content like copyright notice, links, etc. here -->
+        <p>© 2023 My AI Chat Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- Optionally, include JavaScript files at the end for better performance -->
+    <!-- <script src="/js/script.js"></script> -->
+</body>
+</html>
