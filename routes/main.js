@@ -5,9 +5,9 @@ const Bot = require('../models/bot');
 
 router.get('/', (req, res) => {
 
-    if(req.isAuthenticated()){
-        res.redirect('/dashboard');
-    }
+    //if(req.isAuthenticated()){
+    //    res.redirect('/dashboard');
+    //}
 
     req.session.user = '';
     res.render('index', { title: req.app.locals.siteName });
