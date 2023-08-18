@@ -8,8 +8,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const DB_CONNECTION = "";
-
+let DB_CONNECTION = "";
 
 if(process.env.ENV == 'dev'){
     DB_CONNECTION = process.env.DB_CONNECTION;
