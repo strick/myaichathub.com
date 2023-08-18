@@ -3,6 +3,8 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 require('dotenv').config();
 const User = require('../models/user');
 
+console.log("Passport is using the following callback: " + process.env.FACEBOOK_APP_CALLBACK);
+
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
