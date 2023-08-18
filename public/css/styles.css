@@ -128,3 +128,36 @@ button:hover {
         border-bottom: none;  /* Remove divider on larger screens */
     }
 }
+
+/* Newly added styles for Dashboard Page */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* If you have more than one type of button on the site, consider adding a new class for this specific button's hover state */
+button:hover {
+    background-color: #0056b3;
+}

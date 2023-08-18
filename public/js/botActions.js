@@ -20,6 +20,7 @@ function deleteBot(botId) {
             // If successful, remove the bot's row from the table
             const btn = document.querySelector(`[data-bot-id="${botId}"]`);
             btn.closest('tr').remove();
+            location.reload(true);
         } else {
             // If there was an error, display it
             alert(data.message || 'Error deleting bot.');

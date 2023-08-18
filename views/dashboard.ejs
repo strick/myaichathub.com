@@ -1,31 +1,42 @@
 <!-- Dashboard Content -->
 <h2>Welcome to your Dashboard, <%= user.name %>!</h2>
 
-<!-- Form to Add a New Bot -->
-<h3>Create a New Bot:</h3>
-<form action="/create-bot" method="post">
-    <div class="form-group">
-        <label for="botName">Bot Name:</label>
-        <input type="text" id="botName" name="name" required>
+<!-- Check if the user has no bots -->
+<% if (bots.length < 3) { %>
+    <!-- Form to Add a New Bot -->
+    <div style="margin-top: 2rem;">
+        <h3>Create a New Bot: (<%= 3 - bots.length %> remaining)</h3>
+        <form action="/create-bot" method="post">
+            <div class="form-group">
+                <label for="botName">Bot Name:</label>
+                <input type="text" id="botName" name="name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Bot</button>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary">Create Bot</button>
-</form>
+<% } %>
 
-<h3>Your Bot Information:</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Bot Name</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Example row -->
-        <% bots.forEach(bot => { %>
-        <tr>
-            <td><%= bot.name %> (Created on: <%= bot.createdAt.toDateString() %>)</td>
-            <td><button data-bot-id="<%= bot.id %>" onclick="deleteBot('<%= bot.id %>')">Delete</button></td>
-        </tr>
-        <% }); %>
-    </tbody>
-</table>
+<div style="margin-top: 2rem;">
+    <h3>Your Bot Information:</h3>
+    <% if (bots.length) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bot Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Render the bots information -->
+                <% bots.forEach(bot => { %>
+                <tr>
+                    <td><%= bot.name %> (Created on: <%= bot.createdAt.toDateString() %>)</td>
+                    <td><button data-bot-id="<%= bot.id %>" onclick="deleteBot('<%= bot.id %>')">Delete</button></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>You currently don't have any bots.</p>
+    <% } %>
+</div>
