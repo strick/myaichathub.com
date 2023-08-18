@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    res.render('dashboard', { title: 'Dashboard - My AI Chat Hub', user: JSON.stringify(req.session.passport.user) });
+
+    res.render('dashboard', { title: 'Dashboard - My AI Chat Hub', user: req.session.passport.user });
 });
 
 module.exports = router;

@@ -7,6 +7,7 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', { failur
     res.redirect('/dashboard');
 });
 
+/*
 router.get('/logout', (req, res) => {
     req.logout(
         req.session.destroy(err => {
@@ -14,11 +15,14 @@ router.get('/logout', (req, res) => {
                 console.log("Error: Failed to destroy the session during logout.", err);
                 return res.redirect('/errorPage'); // Or some error page
             }
-            res.clearCookie('connect.sid');
-            res.redirect('/');
+            else {
+                res.clearCookie('connect.sid');
+                res.redirect('/');
+            }
         })
     );
 });
+*/
 
 router.get('/login', (req, res) => {
     res.redirect('/auth/facebook');

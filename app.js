@@ -5,7 +5,28 @@ const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
 const passport = require('./middleware/passport');
 require('dotenv').config();
+const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const DB_CONNECTION = "";
+
+
+if(process.env.ENV == 'dev'){
+    DB_CONNECTION = process.env.DB_CONNECTION;
+}
+else {
+    
+    DB_CONNECTION = `${process.env.DBTYPE}://${process.env.DBUSER}:${process.env.DBPASS}@${process.env.DBHOST}/${process.env.DBNAME}?retryWrites=true&w=majority`
+}
+ 
+mongoose.connect(process.env.DB_CONNECTION, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('Connected to MongoDB');
+}).catch(error => {
+    console.error('MongoDB connection error:', error);
+});
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,9 +45,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret: process.env.SESSION_SECRET, // Secret key used to sign the session ID cookie
-    resave: false,                 // Forces session to be saved even when not modified
-    saveUninitialized: true,       // Forces a session that is "uninitialized" to be saved to the store
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.DB_CONNECTION,
+        ttl: 14 * 24 * 60 * 60 // = 14 days. Default
+    })
 }));
 
 // If you're using passport, initialize it after the express-session middleware
