@@ -15,11 +15,12 @@ if(process.env.ENV == 'dev'){
     DB_CONNECTION = process.env.DB_CONNECTION;
 }
 else {
-    
     DB_CONNECTION = `${process.env.DBTYPE}://${process.env.DBUSER}:${process.env.DBPASS}@${process.env.DBHOST}/${process.env.DBNAME}?retryWrites=true&w=majority`
 }
+
+console.log(`DB Connection: ${DB_CONNECTION}`)
  
-mongoose.connect(process.env.DB_CONNECTION, {
+mongoose.connect(DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
