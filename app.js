@@ -30,7 +30,7 @@ mongoose.connect(DB_CONNECTION, {
 });
 
 const app = express();
-const PORT = process.env.PORT || 8080; //3000;
+const PORT = process.env.PORT || 3000;
 
 // Set up EJS as the templating engine
 app.set('view engine', 'ejs');
