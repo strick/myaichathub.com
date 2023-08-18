@@ -32,6 +32,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.locals.siteName = "My AI ChatHub";
+app.locals.title = app.locals.siteName;
 
 // Set up EJS as the templating engine
 app.set('view engine', 'ejs');

@@ -13,6 +13,9 @@
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Add these in the head section -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
@@ -37,7 +40,25 @@
         </nav>
     </header>
 
+
     <main class="container mt-4">
+
+        <!-- Success Alert -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert" style="display:none;">
+            Bot details saved successfully!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        
+        <!-- Error Alert -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorAlert" style="display:none;">
+            There was an error saving the bot details.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
         <%- body %> <!-- This will insert the body content of other views that extend this layout -->
     </main>
 
@@ -54,8 +75,11 @@
 
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Add this before the closing body tag -->
+
     <!-- Optionally, include your custom JavaScript files at the end for better performance -->
     <script src="/js/botActions.js"></script>
 </body>

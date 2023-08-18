@@ -23,6 +23,8 @@
             <thead>
                 <tr>
                     <th>Bot Name</th>
+                    <th>Description</th>
+                    <th>Created on</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -30,8 +32,17 @@
                 <!-- Render the bots information -->
                 <% bots.forEach(bot => { %>
                 <tr>
-                    <td><%= bot.name %> (Created on: <%= bot.createdAt.toDateString() %>)</td>
-                    <td><button data-bot-id="<%= bot.id %>" onclick="deleteBot('<%= bot.id %>')">Delete</button></td>
+                    <td>
+                        <span class="bot-name" data-bot-id="<%= bot.id %>"><%= bot.name %></span>
+                    </td>
+                    <td>
+                        <p><%= bot.description %></p>
+                    </td>
+                    <td><%= bot.createdAt.toDateString() %></td>
+                    <td>
+                        <button data-bot-id="edit-<%= bot.id %>" onclick="location.href='/edit-bot/<%= bot.id %>'">Edit</button>
+                        <button data-bot-id="<%= bot.id %>" onclick="deleteBot('<%= bot.id %>')">Delete</button>
+                    </td>
                 </tr>
                 <% }); %>
             </tbody>
