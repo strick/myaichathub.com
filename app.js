@@ -30,7 +30,7 @@ mongoose.connect(DB_CONNECTION, {
 });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080; //3000;
 
 // Set up EJS as the templating engine
 app.set('view engine', 'ejs');
@@ -50,7 +50,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-        mongoUrl: process.env.DB_CONNECTION,
+        mongoUrl: DB_CONNECTION,
         ttl: 14 * 24 * 60 * 60 // = 14 days. Default
     })
 }));
@@ -70,5 +70,5 @@ app.use(botRoutes);
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`My AI Chat Hub is running on http://localhost:${PORT}`);
+    console.log(`My AI Chat Hub is running on test http://localhost:${PORT}`);
 });
