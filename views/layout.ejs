@@ -1,34 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- Assuming you have a stylesheet at this location -->
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Your custom styles -->
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
     <header>
-        <!-- You can add a navigation bar, logo, or other header elements here -->
-        <h1>My AI Chat Hub</h1>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/login">Login</a></li>
-            </ul>
-        </nav>           
+        <!-- Bootstrap Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">My AI Chat Hub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <main>
+    <main class="container mt-4">
         <%- body %> <!-- This will insert the body content of other views that extend this layout -->
     </main>
 
-    <footer>
-        <!-- Add footer content like copyright notice, links, etc. here -->
-        <p>© 2023 My AI Chat Hub. All rights reserved.</p>
+    <footer class="mt-5">
+        <div class="container">
+            <p>© 2023 My AI Chat Hub. All rights reserved. |
+                <a href="https://github.com/strick/myaichathub.com" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </p>
+        </div>
     </footer>
+    
 
-    <!-- Optionally, include JavaScript files at the end for better performance -->
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Optionally, include your custom JavaScript files at the end for better performance -->
     <!-- <script src="/js/script.js"></script> -->
 </body>
+
 </html>
