@@ -1,0 +1,23 @@
+# Use an official Node.js runtime as the base image
+FROM node:18
+
+# Set the working directory in the container to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY package*.json ./
+
+# Install the application's dependencies
+RUN npm install
+# For production, you might want to only install production dependencies:
+# RUN npm ci --only=production
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Specify the port the app listens on
+EXPOSE 3000
+
+# Define the command to run the application
+CMD npm install && \
+    npm run start:dev
