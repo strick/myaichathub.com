@@ -1,1 +1,31 @@
-Welcome <%= user.name %>.
+<!-- Dashboard Content -->
+<h2>Welcome to your Dashboard, <%= user.name %>!</h2>
+
+<!-- Form to Add a New Bot -->
+<h3>Create a New Bot:</h3>
+<form action="/create-bot" method="post">
+    <div class="form-group">
+        <label for="botName">Bot Name:</label>
+        <input type="text" id="botName" name="name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Bot</button>
+</form>
+
+<h3>Your Bot Information:</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Bot Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Example row -->
+        <% bots.forEach(bot => { %>
+        <tr>
+            <td><%= bot.name %> (Created on: <%= bot.createdAt.toDateString() %>)</td>
+            <td><button data-bot-id="<%= bot.id %>" onclick="deleteBot('<%= bot.id %>')">Delete</button></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
